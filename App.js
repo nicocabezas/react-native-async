@@ -13,14 +13,13 @@ function HomeScreen() {
   );
 }
 
-function NotificationsScreen() {
+function AboutScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Notificaciones</Text>
+      <Text>About</Text>
     </View>
   );
 }
-
 
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
    <NavigationContainer>
      <Drawer.Navigator initialRouteName="Home">
        <Drawer.Screen name="Home" component={HomeScreen} />
-       <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+       <Drawer.Screen name="About" component={AboutScreen} />
      </Drawer.Navigator>
    </NavigationContainer>
  );

@@ -1,39 +1,42 @@
-import React from "react";
-import { Text, View, FlatList } from 'react-native'
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-class App extends React.Component {
-  constructor() 
-  {
-    super();
-    this.state ={
-      data: []
-    }
-  }
-
-  componentDidMount() {
-    this.apiCall();
-  }
-  async apiCall() 
-  {
-    let resp =await fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20')
-    let respJson= await resp.json()
-    //console.warn(respJson)
-    this.setState({data:respJson.results})
-  }
-
-  render() {
-    return (
-      <View>
-        <Text style={{ fontSize: 50, padding: 50, backgroundColor:'red' }}>API POKEMON</Text>
-        <FlatList
-        data={this.state.data}
-        renderItem={({item}) =>
-        <Text style= {{fontSize: 20, backgroundColor: 'yellow', margin:5}}>{item.name}</Text>
-      }
-        />
-      </View>
-    )
-  }
+const Drawer = createDrawerNavigator();
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
 }
+
+function NotificationsScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Notificaciones</Text>
+    </View>
+  );
+}
+
+
+
+function App() {
+ return (
+   <NavigationContainer>
+     <Drawer.Navigator initialRouteName="Home">
+       <Drawer.Screen name="Home" component={HomeScreen} />
+       <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+     </Drawer.Navigator>
+   </NavigationContainer>
+ );
+}
+
+
+
+
+
 
 export default App;

@@ -10,12 +10,12 @@ const LoginScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const navigation = useNavigation
+    const navigation = useNavigation()
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if(user) {
-                navigation.navigate("HomeScreen")
+                navigation.navigate("Home")
             }
         })
 

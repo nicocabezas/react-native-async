@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         padding: 24
     },
     titleText: {
-        fontFamily: 'roboto',
+        
         fontSize: 20,
     }
 })
